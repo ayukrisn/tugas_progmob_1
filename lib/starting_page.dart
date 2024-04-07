@@ -14,16 +14,16 @@ class StartingPage extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Align(
             alignment: Alignment.topCenter,
-            child: ListView(
-              // mainAxisAlignment: MainAxisAlignment.start,
-              // crossAxisAlignment: CrossAxisAlignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 32),
+                const SizedBox(height: 56),
                 Image.asset(
                   'assets/logo.png',
                   height: 30,
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 16),
                 Image.asset(
                   'assets/to-do-list.png',
                   width: 300,

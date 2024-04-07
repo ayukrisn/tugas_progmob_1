@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas_progmob_1/signup_page.dart';
+import 'package:tugas_progmob_1/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -14,10 +15,10 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _passwordVisible = true;
 
-  @override
-  void initState() {
-    _passwordVisible = false;
-  }
+  // @override
+  // void initState() {
+  //   _passwordVisible = false;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +78,14 @@ class _LoginPageState extends State<LoginPage> {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your email.';
                       }
+                      if (!RegExp(r'\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b',
+                              caseSensitive: false)
+                          .hasMatch(value)) {
+                        return 'Please enter a valid email address.';
+                      }
+                      if (value != 'ayukrisna@gmail.com') {
+                        return 'Wrong email. Please try again.';
+                      }
                       return null;
                     },
                     decoration: const InputDecoration(
@@ -84,12 +93,15 @@ class _LoginPageState extends State<LoginPage> {
                       hintText: 'Enter your e-mail',
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 16),
                   TextFormField(
                     obscureText: !_passwordVisible, // Hides the entered text
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your password.';
+                      }
+                      if (value != 'progmobkecebadai') {
+                        return 'Wrong password. Please try again.';
                       }
                       return null;
                     },
@@ -111,32 +123,34 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Forgot Password? ",
-                      style: TextStyle(fontSize: 14, color: Color(0xFF446F84)),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        // Navigate to login page
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignupPage()),
-                        );
-                      },
-                      child: const Text(
-                        'Reset Password',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Color(0xFF446F84),
-                          fontWeight: FontWeight.bold,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Forgot Password? ",
+                        style:
+                            TextStyle(fontSize: 14, color: Color(0xFF446F84)),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // Navigate to login page
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignupPage()),
+                          );
+                        },
+                        child: const Text(
+                          'Reset Password',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF446F84),
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
                   const SizedBox(height: 160),
                   Row(
                     children: [
@@ -144,7 +158,11 @@ class _LoginPageState extends State<LoginPage> {
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              // Process login
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()),
+                              );
                             }
                           },
                           child: Text('Log In',
@@ -157,32 +175,33 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Don't have an account? ",
-                      style: TextStyle(fontSize: 14, color: Color(0xFF446F84)),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        // Navigate to login page
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignupPage()),
-                        );
-                      },
-                      child: const Text(
-                        'Sign Up',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Color(0xFF446F84),
-                          fontWeight: FontWeight.bold,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Don't have an account? ",
+                        style:
+                            TextStyle(fontSize: 14, color: Color(0xFF446F84)),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignupPage()),
+                          );
+                        },
+                        child: const Text(
+                          'Sign Up',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF446F84),
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
                 ],
               ),
             ),

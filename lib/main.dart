@@ -48,6 +48,10 @@ class MyApp extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               borderSide: BorderSide(width: 2, color: Color(0xFFeb4444)),
             ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: BorderSide(width: 2, color: Color(0xFFeb4444)),
+            ),
           )),
       home: SplashScreen(),
     );
