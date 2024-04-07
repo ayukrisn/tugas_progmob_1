@@ -14,9 +14,9 @@ class StartingPage extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Align(
             alignment: Alignment.topCenter,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: ListView(
+              // mainAxisAlignment: MainAxisAlignment.start,
+              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 32),
                 Image.asset(
@@ -87,7 +87,7 @@ class StartingPage extends StatelessWidget {
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold)),
                       ),
-                    )
+                    ),
                   ],
                 ),
                 const SizedBox(height: 8),

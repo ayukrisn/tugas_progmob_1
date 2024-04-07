@@ -17,18 +17,38 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
           useMaterial3: true,
+          textSelectionTheme:
+              TextSelectionThemeData(cursorColor: Color(0xFF446F84)),
           textTheme: GoogleFonts.baloo2TextTheme(),
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 234, 185, 108), // Text style
-                elevation: 1, // Elevation
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15), // Rounded corners
-                ),
-                padding: EdgeInsets.symmetric(vertical: 10),
-              )
-            )
-          ),
+            backgroundColor: Color.fromARGB(255, 234, 185, 108), // Text style
+            elevation: 1, // Elevation
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15), // Rounded corners
+            ),
+            padding: EdgeInsets.symmetric(vertical: 10),
+          )),
+          inputDecorationTheme: InputDecorationTheme(
+            filled: true,
+            fillColor: Color(0xFFFCF3E5),
+            labelStyle: const TextStyle(
+              color: Color(0xFF446F84),
+              fontWeight: FontWeight.bold,
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: BorderSide(width: 2, color: Color(0xFF446F84)),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: BorderSide(width: 2, color: Color(0xFFEFCD9F)),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: BorderSide(width: 2, color: Color(0xFFeb4444)),
+            ),
+          )),
       home: SplashScreen(),
     );
   }
