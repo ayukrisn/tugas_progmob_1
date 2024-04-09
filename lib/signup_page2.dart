@@ -17,19 +17,22 @@ class _SignupPageState extends State<SignupPage2> {
   String? _name = '';
   String? _username = '';
   String? _occupancy = '';
-  DateTime _birthDate = DateTime(1);
+  DateTime _birthDate = DateTime.now();
 
   TextEditingController _dateController = TextEditingController();
 
   Future<void> _selectDate() async {
     DateTime? _picked = await showDatePicker(
         context: context,
-        initialDate: DateTime.now(),
+        initialDate: _birthDate,
         firstDate: DateTime(1950),
         lastDate: DateTime.now());
-    setState(() {
-      _dateController.text = _picked.toString().split("")[1];
-    });
+    if (_picked != null && _picked != _birthDate) {
+      setState(() {
+        _birthDate = _picked;
+        _dateController.text = "${_picked.day}/${_picked.month}/${_picked.year}";
+      });
+    }
   }
 
   @override

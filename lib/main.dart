@@ -39,11 +39,11 @@ class MyApp extends StatelessWidget {
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide(width: 2, color: Color(0xFF446F84)),
+              borderSide: BorderSide(width: 2, color: Color(0xFFEFCD9F)),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide(width: 2, color: Color(0xFFEFCD9F)),
+              borderSide: BorderSide(width: 2, color: Color(0xFF446F84)),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
