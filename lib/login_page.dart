@@ -12,13 +12,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  
 
   bool _passwordVisible = true;
-
-  // @override
-  // void initState() {
-  //   _passwordVisible = false;
-  // }
 
   @override
   Widget build(BuildContext context) {

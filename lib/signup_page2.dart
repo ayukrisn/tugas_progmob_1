@@ -16,7 +16,7 @@ class _SignupPageState extends State<SignupPage2> {
   bool _passwordVisible = true;
   String? _name = '';
   String? _username = '';
-  String? _occupancy = '';
+  String? _career = 'Prefer not to say';
   DateTime _birthDate = DateTime.now();
 
   TextEditingController _dateController = TextEditingController();
@@ -30,7 +30,8 @@ class _SignupPageState extends State<SignupPage2> {
     if (_picked != null && _picked != _birthDate) {
       setState(() {
         _birthDate = _picked;
-        _dateController.text = "${_picked.day}/${_picked.month}/${_picked.year}";
+        _dateController.text =
+            "${_picked.day}/${_picked.month}/${_picked.year}";
       });
     }
   }
@@ -130,6 +131,27 @@ class _SignupPageState extends State<SignupPage2> {
                       _selectDate();
                     },
                   ),
+                  const SizedBox(height: 16),
+                  DropdownButton<String>(
+                      value: _career,
+                      items: <String>[
+                        'Student',
+                        'Teacher',
+                        'Freelance',
+                        'Salesman',
+                        'Prefer not to say'
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          _career = newValue;
+                        });
+                      },
+                      hint: Text("Choose career")),
                   const SizedBox(height: 120),
                   Row(
                     children: [
