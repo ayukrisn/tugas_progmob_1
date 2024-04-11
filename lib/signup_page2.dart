@@ -3,6 +3,55 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas_progmob_1/login_page.dart';
 import 'package:tugas_progmob_1/home_page.dart';
 
+class CustomDropdownFormField extends StatelessWidget {
+  final String? value;
+  final List<String> items;
+  final String? hint;
+  final ValueChanged<String?> onChanged;
+
+  const CustomDropdownFormField({
+    Key? key,
+    required this.value,
+    required this.items,
+    this.hint,
+    required this.onChanged,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButtonFormField<String>(
+      value: value,
+      decoration: InputDecoration(
+        labelText: hint,
+        prefixIcon: Icon(Icons.work),
+      ),
+      items: [
+        if (hint != null)
+          DropdownMenuItem<String>(
+            value: null,
+            child: Text(
+              hint!,
+              style: TextStyle(color: Colors.grey),
+            ),
+          ),
+        ...items.map((item) {
+          return DropdownMenuItem<String>(
+            value: item,
+            child: Text(item),
+          );
+        }),
+      ],
+      onChanged: onChanged,
+      validator: (value) {
+        if (value == null) {
+          return 'Please choose your career';
+        }
+        return null;
+      },
+    );
+  }
+}
+
 class SignupPage2 extends StatefulWidget {
   const SignupPage2({Key? key}) : super(key: key);
 
@@ -16,8 +65,8 @@ class _SignupPageState extends State<SignupPage2> {
   bool _passwordVisible = true;
   String? _name = '';
   String? _username = '';
-  String? _career = 'Prefer not to say';
-  DateTime _birthDate = DateTime.now();
+  String? _career;
+  DateTime? _birthDate;
 
   TextEditingController _nameController = TextEditingController();
   TextEditingController _usernameController = TextEditingController();
@@ -26,11 +75,12 @@ class _SignupPageState extends State<SignupPage2> {
 
   Future<void> _selectDate() async {
     DateTime? _picked = await showDatePicker(
-        context: context,
-        initialDate: _birthDate,
-        firstDate: DateTime(1950),
-        lastDate: DateTime.now());
-    if (_picked != null && _picked != _birthDate) {
+      context: context,
+      initialDate: _birthDate ?? DateTime.now(),
+      firstDate: DateTime(1950),
+      lastDate: DateTime.now(),
+    );
+    if (_picked != null) {
       setState(() {
         _birthDate = _picked;
         _dateController.text =
@@ -46,8 +96,6 @@ class _SignupPageState extends State<SignupPage2> {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 32),
             Center(
@@ -137,28 +185,30 @@ class _SignupPageState extends State<SignupPage2> {
                     onTap: () {
                       _selectDate();
                     },
+                    validator: (value) {
+                      if (_birthDate == null) {
+                        return 'Please select your birth date';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 16),
-                  DropdownButton<String>(
-                      value: _career,
-                      items: <String>[
-                        'Student',
-                        'Teacher',
-                        'Freelance',
-                        'Salesman',
-                        'Prefer not to say'
-                      ].map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          _career = newValue;
-                        });
-                      },
-                      hint: Text("Choose career")),
+                  CustomDropdownFormField(
+                    value: _career,
+                    hint: 'Career',
+                    items: [
+                      'Student',
+                      'Teacher',
+                      'Freelance',
+                      'Salesman',
+                      'Prefer not to say',
+                    ],
+                    onChanged: (newValue) {
+                      setState(() {
+                        _career = newValue;
+                      });
+                    },
+                  ),
                   const SizedBox(height: 120),
                   Row(
                     children: [
