@@ -12,14 +12,23 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  
+
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();  
 
   bool _passwordVisible = true;
 
   @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFDF7EE),
+      backgroundColor: Color(0xFFFAF7F2),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView(
@@ -38,27 +47,27 @@ class _LoginPageState extends State<LoginPage> {
                 style: GoogleFonts.baloo2(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF446F84))),
+                    color: Color(0xFF263E4A))),
             const SizedBox(height: 8),
             const Text.rich(
               TextSpan(
                 children: <TextSpan>[
                   TextSpan(
                     text: 'Start with entering your ',
-                    style: TextStyle(fontSize: 14, color: Color(0xFF446F84)),
+                    style: TextStyle(fontSize: 14, color: Color(0xFF263E4A)),
                   ),
                   TextSpan(
                     text: 'e-mail and password',
                     style: TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF446F84),
+                      color: Color(0xFF263E4A),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   TextSpan(
                     text:
                         ' below, and we will be ready to continue our journey!',
-                    style: TextStyle(fontSize: 14, color: Color(0xFF446F84)),
+                    style: TextStyle(fontSize: 14, color: Color(0xFF263E4A)),
                   ),
                 ],
               ),
@@ -70,16 +79,17 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
+                    controller: _emailController,
+                    validator: (_emailController) {
+                      if (_emailController == null || _emailController.isEmpty) {
                         return 'Please enter your email.';
                       }
                       if (!RegExp(r'\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b',
                               caseSensitive: false)
-                          .hasMatch(value)) {
+                          .hasMatch(_emailController)) {
                         return 'Please enter a valid email address.';
                       }
-                      if (value != 'ayukrisna@gmail.com') {
+                      if (_emailController != 'ayukrisna@gmail.com') {
                         return 'Wrong email. Please try again.';
                       }
                       return null;
@@ -91,12 +101,13 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
+                    controller: _passwordController,
                     obscureText: !_passwordVisible, // Hides the entered text
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
+                    validator: (_passwordController) {
+                      if (_passwordController == null || _passwordController.isEmpty) {
                         return 'Please enter your password.';
                       }
-                      if (value != 'progmobkecebadai') {
+                      if (_passwordController != 'progmobkecebadai') {
                         return 'Wrong password. Please try again.';
                       }
                       return null;
@@ -109,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                             _passwordVisible
                                 ? Icons.visibility
                                 : Icons.visibility_off,
-                            color: Color(0xFF446F84),
+                            color: Color(0xFF263E4A),
                           ),
                           onPressed: () {
                             setState(() {
@@ -125,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                       const Text(
                         "Forgot Password? ",
                         style:
-                            TextStyle(fontSize: 14, color: Color(0xFF446F84)),
+                            TextStyle(fontSize: 14, color: Color(0xFF263E4A)),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -140,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                           'Reset Password',
                           style: TextStyle(
                             fontSize: 14,
-                            color: Color(0xFF446F84),
+                            color: Color(0xFF263E4A),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -177,7 +188,7 @@ class _LoginPageState extends State<LoginPage> {
                       const Text(
                         "Don't have an account? ",
                         style:
-                            TextStyle(fontSize: 14, color: Color(0xFF446F84)),
+                            TextStyle(fontSize: 14, color: Color(0xFF263E4A)),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -191,7 +202,7 @@ class _LoginPageState extends State<LoginPage> {
                           'Sign Up',
                           style: TextStyle(
                             fontSize: 14,
-                            color: Color(0xFF446F84),
+                            color: Color(0xFF263E4A),
                             fontWeight: FontWeight.bold,
                           ),
                         ),

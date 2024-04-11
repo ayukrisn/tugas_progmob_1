@@ -21,7 +21,7 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFDF7EE),
+      backgroundColor: Color(0xFFFAF7F2),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView(
@@ -40,27 +40,27 @@ class _SignupPageState extends State<SignupPage> {
                 style: GoogleFonts.baloo2(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF446F84))),
+                    color: Color(0xFF263E4A))),
             const SizedBox(height: 8),
             const Text.rich(
               TextSpan(
                 children: <TextSpan>[
                   TextSpan(
                     text: 'Start with entering your ',
-                    style: TextStyle(fontSize: 14, color: Color(0xFF446F84)),
+                    style: TextStyle(fontSize: 14, color: Color(0xFF263E4A)),
                   ),
                   TextSpan(
                     text: 'e-mail and password',
                     style: TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF446F84),
+                      color: Color(0xFF263E4A),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   TextSpan(
                     text:
                         ' below, and we will be ready to embark to our new journey!',
-                    style: TextStyle(fontSize: 14, color: Color(0xFF446F84)),
+                    style: TextStyle(fontSize: 14, color: Color(0xFF263E4A)),
                   ),
                 ],
               ),
@@ -108,7 +108,7 @@ class _SignupPageState extends State<SignupPage> {
                             _passwordVisible
                                 ? Icons.visibility
                                 : Icons.visibility_off,
-                            color: Color(0xFF446F84),
+                            color: Color(0xFF263E4A),
                           ),
                           onPressed: () {
                             setState(() {
@@ -140,7 +140,7 @@ class _SignupPageState extends State<SignupPage> {
                             _passwordVisible
                                 ? Icons.visibility
                                 : Icons.visibility_off,
-                            color: Color(0xFF446F84),
+                            color: Color(0xFF263E4A),
                           ),
                           onPressed: () {
                             setState(() {
@@ -180,7 +180,7 @@ class _SignupPageState extends State<SignupPage> {
                       const Text(
                         "Have an account? ",
                         style:
-                            TextStyle(fontSize: 14, color: Color(0xFF446F84)),
+                            TextStyle(fontSize: 14, color: Color(0xFF263E4A)),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -194,7 +194,7 @@ class _SignupPageState extends State<SignupPage> {
                           'Log In',
                           style: TextStyle(
                             fontSize: 14,
-                            color: Color(0xFF446F84),
+                            color: Color(0xFF263E4A),
                             fontWeight: FontWeight.bold,
                           ),
                         ),

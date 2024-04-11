@@ -9,7 +9,7 @@ class StartingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFFFDF7EE),
+        backgroundColor: Color(0xFFFAF7F2),
         body: Padding(
           padding: const EdgeInsets.all(16),
           child: Align(
@@ -38,7 +38,7 @@ class StartingPage extends StatelessWidget {
                           style: GoogleFonts.baloo2(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF446F84))),
+                              color: Color(0xFF263E4A))),
                       const SizedBox(height: 16),
                       const Text.rich(
                         TextSpan(
@@ -46,13 +46,13 @@ class StartingPage extends StatelessWidget {
                             TextSpan(
                               text: 'No need to worry anymore! With ',
                               style: TextStyle(
-                                  fontSize: 14, color: Color(0xFF446F84)),
+                                  fontSize: 14, color: Color(0xFF263E4A)),
                             ),
                             TextSpan(
                               text: 'do it!',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: Color(0xFF446F84),
+                                color: Color(0xFF263E4A),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -60,7 +60,7 @@ class StartingPage extends StatelessWidget {
                               text:
                                   ', you can start doing your tasks with better flow and efficiency, ensuring you stay on top of your priorities and conquer your to-do list with ease.',
                               style: TextStyle(
-                                  fontSize: 14, color: Color(0xFF446F84)),
+                                  fontSize: 14, color: Color(0xFF263E4A)),
                             ),
                           ],
                         ),
@@ -96,7 +96,7 @@ class StartingPage extends StatelessWidget {
                   children: [
                     const Text(
                       'Have an account? ',
-                      style: TextStyle(fontSize: 14, color: Color(0xFF446F84)),
+                      style: TextStyle(fontSize: 14, color: Color(0xFF263E4A)),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -110,7 +110,7 @@ class StartingPage extends StatelessWidget {
                         'Log In',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Color(0xFF446F84),
+                          color: Color(0xFF263E4A),
                           fontWeight: FontWeight.bold,
                         ),
                       ),

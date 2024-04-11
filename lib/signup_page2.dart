@@ -39,7 +39,7 @@ class _SignupPageState extends State<SignupPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFDF7EE),
+      backgroundColor: Color(0xFFFAF7F2),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView(
@@ -58,26 +58,26 @@ class _SignupPageState extends State<SignupPage2> {
                 style: GoogleFonts.baloo2(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF446F84))),
+                    color: Color(0xFF263E4A))),
             const SizedBox(height: 8),
             const Text.rich(
               TextSpan(
                 children: <TextSpan>[
                   TextSpan(
                     text: 'One step left! ',
-                    style: TextStyle(fontSize: 14, color: Color(0xFF446F84)),
+                    style: TextStyle(fontSize: 14, color: Color(0xFF263E4A)),
                   ),
                   TextSpan(
                     text: 'Fill up your biodata below',
                     style: TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF446F84),
+                      color: Color(0xFF263E4A),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   TextSpan(
                     text: ' to continue shortly.',
-                    style: TextStyle(fontSize: 14, color: Color(0xFF446F84)),
+                    style: TextStyle(fontSize: 14, color: Color(0xFF263E4A)),
                   ),
                 ],
               ),
@@ -183,7 +183,7 @@ class _SignupPageState extends State<SignupPage2> {
                       const Text(
                         "Have an account? ",
                         style:
-                            TextStyle(fontSize: 14, color: Color(0xFF446F84)),
+                            TextStyle(fontSize: 14, color: Color(0xFF263E4A)),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -197,7 +197,7 @@ class _SignupPageState extends State<SignupPage2> {
                           'Log In',
                           style: TextStyle(
                             fontSize: 14,
-                            color: Color(0xFF446F84),
+                            color: Color(0xFF263E4A),
                             fontWeight: FontWeight.bold,
                           ),
                         ),

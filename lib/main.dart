@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF446F84)),
+          colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF263E4A)),
           textSelectionTheme:
-              TextSelectionThemeData(cursorColor: Color(0xFF446F84)),
+              TextSelectionThemeData(cursorColor: Color(0xFF263E4A)),
           textTheme: GoogleFonts.baloo2TextTheme(),
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
             filled: true,
             fillColor: Color(0xFFFCF3E5),
             labelStyle: const TextStyle(
-              color: Color(0xFF446F84),
+              color: Color(0xFF263E4A),
               fontWeight: FontWeight.bold,
             ),
             enabledBorder: OutlineInputBorder(
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide(width: 2, color: Color(0xFF446F84)),
+              borderSide: BorderSide(width: 2, color: Color(0xFF263E4A)),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),

@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     // Your splash screen UI code
     return Scaffold(
-      backgroundColor: Color(0xFFFDF7EE),
+      backgroundColor: Color(0xFFFAF7F2),
       body: Center(
         child: Column( 
           mainAxisAlignment: MainAxisAlignment.center,
@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
               width: 260,
             ),
             const SizedBox(height: 16),
-            Text("Your to do list friend, ready to help!", style: GoogleFonts.baloo2(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF446F84))),
+            Text("Your to do list friend, ready to help!", style: GoogleFonts.baloo2(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF263E4A))),
           ],),)
     );
   }
