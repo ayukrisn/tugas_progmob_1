@@ -18,6 +18,7 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController _confirmPasswordController = TextEditingController();
 
   bool _passwordVisible = true;
+  bool _agreeToTerms = false;
 
   @override
   void dispose() {
@@ -81,7 +82,8 @@ class _SignupPageState extends State<SignupPage> {
                   TextFormField(
                     controller: _emailController,
                     validator: (_emailController) {
-                      if (_emailController == null || _emailController.isEmpty) {
+                      if (_emailController == null ||
+                          _emailController.isEmpty) {
                         return 'Please enter your email.';
                       }
                       if (!RegExp(r'\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b',
@@ -102,7 +104,8 @@ class _SignupPageState extends State<SignupPage> {
                     controller: _passwordController,
                     obscureText: !_passwordVisible,
                     validator: (_passwordController) {
-                      if (_passwordController == null || _passwordController.isEmpty) {
+                      if (_passwordController == null ||
+                          _passwordController.isEmpty) {
                         return 'Please enter your password.';
                       }
                       return null;
@@ -129,11 +132,13 @@ class _SignupPageState extends State<SignupPage> {
                   TextFormField(
                     controller: _confirmPasswordController,
                     obscureText: !_passwordVisible,
-                    validator: ( _confirmPasswordController) {
-                      if ( _confirmPasswordController == null ||  _confirmPasswordController.isEmpty) {
+                    validator: (_confirmPasswordController) {
+                      if (_confirmPasswordController == null ||
+                          _confirmPasswordController.isEmpty) {
                         return 'Please confirm your password.';
                       }
-                      if ( _confirmPasswordController != _passwordController.text) {
+                      if (_confirmPasswordController !=
+                          _passwordController.text) {
                         return "Passwords don't match";
                       }
                       return null;
@@ -156,18 +161,59 @@ class _SignupPageState extends State<SignupPage> {
                           }),
                     ),
                   ),
+                  const SizedBox(height: 16),
+                  CheckboxListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: const Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
+                      child: Text.rich(
+                        TextSpan(
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'By continuing you agree to our ',
+                              style: TextStyle(
+                                  fontSize: 14, color: Color(0xFF263E4A)),
+                            ),
+                            TextSpan(
+                              text: 'Terms of Service and Privacy Policy',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Color(0xFF263E4A),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: _agreeToTerms,
+                    onChanged: (newValue) {
+                      setState(() {
+                        _agreeToTerms = newValue ?? false;
+                      });
+                    },
+                  ),
                   const SizedBox(height: 120),
                   Row(
                     children: [
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              // Perform sign up action here
+                            if (_formKey.currentState!.validate() &&
+                                _agreeToTerms) {
+                              _formKey.currentState?.save();
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => SignupPage2()),
+                              );
+                            } else if (!_agreeToTerms) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                      'Please agree to the terms of service and privacy policy.'),
+                                ),
                               );
                             }
                           },
