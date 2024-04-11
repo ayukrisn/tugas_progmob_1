@@ -13,10 +13,19 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
 
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confirmPasswordController = TextEditingController();
+
   bool _passwordVisible = true;
-  String? _email ='';
-  String? _password ='';
-  String? _confirmPassword = '';
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +34,6 @@ class _SignupPageState extends State<SignupPage> {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 32),
             Center(
@@ -72,37 +79,38 @@ class _SignupPageState extends State<SignupPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
+                    controller: _emailController,
+                    validator: (_emailController) {
+                      if (_emailController == null || _emailController.isEmpty) {
                         return 'Please enter your email.';
                       }
                       if (!RegExp(r'\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b',
                               caseSensitive: false)
-                          .hasMatch(value)) {
+                          .hasMatch(_emailController)) {
                         return 'Please enter a valid email address.';
                       }
                       return null;
                     },
-                    onSaved: (value) => _email = value,
                     decoration: const InputDecoration(
                       labelText: 'E-mail',
                       hintText: 'Enter your e-mail',
+                      prefixIcon: Icon(Icons.mail_outline),
                     ),
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
+                    controller: _passwordController,
                     obscureText: !_passwordVisible,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
+                    validator: (_passwordController) {
+                      if (_passwordController == null || _passwordController.isEmpty) {
                         return 'Please enter your password.';
                       }
-                      // print(value);
                       return null;
                     },
-                    onSaved: (value) => _password = value,
                     decoration: InputDecoration(
                       labelText: 'Password',
                       hintText: 'Enter your password',
+                      prefixIcon: Icon(Icons.lock_outline),
                       suffixIcon: IconButton(
                           icon: Icon(
                             _passwordVisible
@@ -119,22 +127,21 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
+                    controller: _confirmPasswordController,
                     obscureText: !_passwordVisible,
-                    onSaved: (value) => _confirmPassword = value,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
+                    validator: ( _confirmPasswordController) {
+                      if ( _confirmPasswordController == null ||  _confirmPasswordController.isEmpty) {
                         return 'Please confirm your password.';
                       }
-                      if (_confirmPassword != _password) {
-                        print(_password);
-                        print(_confirmPassword);
-                        return "Password doesn't match";
+                      if ( _confirmPasswordController != _passwordController.text) {
+                        return "Passwords don't match";
                       }
                       return null;
                     },
                     decoration: InputDecoration(
                       labelText: 'Confirm Password',
                       hintText: 'Confirm your password',
+                      prefixIcon: Icon(Icons.lock_outline),
                       suffixIcon: IconButton(
                           icon: Icon(
                             _passwordVisible
@@ -156,7 +163,7 @@ class _SignupPageState extends State<SignupPage> {
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              _formKey.currentState?.save();
+                              // Perform sign up action here
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(

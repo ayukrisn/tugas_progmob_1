@@ -19,6 +19,9 @@ class _SignupPageState extends State<SignupPage2> {
   String? _career = 'Prefer not to say';
   DateTime _birthDate = DateTime.now();
 
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _careerController = TextEditingController();
   TextEditingController _dateController = TextEditingController();
 
   Future<void> _selectDate() async {
@@ -89,33 +92,37 @@ class _SignupPageState extends State<SignupPage2> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
+                    controller: _nameController,
+                    validator: (_nameController) {
+                      if (_nameController == null || _nameController.isEmpty) {
                         return 'Please enter your name.';
                       }
                       return null;
                     },
-                    onSaved: (value) => _name = value,
+                    onSaved: (_nameController) => _name = _nameController,
                     decoration: const InputDecoration(
                       labelText: 'Name',
                       hintText: 'Enter your name',
+                      prefixIcon: Icon(Icons.face),
                     ),
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
+                    controller: _usernameController,
+                    validator: (_usernameController) {
+                      if (_usernameController == null || _usernameController.isEmpty) {
                         return 'Please enter your username.';
                       }
-                      if (value.trim().contains(RegExp(r'\s'))) {
+                      if (_usernameController.trim().contains(RegExp(r'\s'))) {
                         return 'Whitespace is not allowed';
                       }
                       return null;
                     },
-                    onSaved: (value) => _username = value,
+                    onSaved: (_usernameController) => _username = _usernameController,
                     decoration: const InputDecoration(
                       labelText: 'Username',
                       hintText: 'Enter your username',
+                      prefixIcon: Icon(Icons.person_outline),
                     ),
                   ),
                   const SizedBox(height: 16),
