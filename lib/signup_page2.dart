@@ -92,7 +92,7 @@ class _SignupPageState extends State<SignupPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFAF7F2),
+      backgroundColor: Color(0xFFF5F5F5),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView(
@@ -127,7 +127,7 @@ class _SignupPageState extends State<SignupPage2> {
                     ),
                   ),
                   TextSpan(
-                    text: ' to continue shortly.',
+                    text: ' to continue our fantastic journey shortly.',
                     style: TextStyle(fontSize: 14, color: Color(0xFF263E4A)),
                   ),
                 ],
@@ -154,25 +154,25 @@ class _SignupPageState extends State<SignupPage2> {
                       prefixIcon: Icon(Icons.face),
                     ),
                   ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _usernameController,
-                    validator: (_usernameController) {
-                      if (_usernameController == null || _usernameController.isEmpty) {
-                        return 'Please enter your username.';
-                      }
-                      if (_usernameController.trim().contains(RegExp(r'\s'))) {
-                        return 'Whitespace is not allowed';
-                      }
-                      return null;
-                    },
-                    onSaved: (_usernameController) => _username = _usernameController,
-                    decoration: const InputDecoration(
-                      labelText: 'Username',
-                      hintText: 'Enter your username',
-                      prefixIcon: Icon(Icons.person_outline),
-                    ),
-                  ),
+                  // const SizedBox(height: 16),
+                  // TextFormField(
+                  //   controller: _usernameController,
+                  //   validator: (_usernameController) {
+                  //     if (_usernameController == null || _usernameController.isEmpty) {
+                  //       return 'Please enter your username.';
+                  //     }
+                  //     if (_usernameController.trim().contains(RegExp(r'\s'))) {
+                  //       return 'Whitespace is not allowed';
+                  //     }
+                  //     return null;
+                  //   },
+                  //   onSaved: (_usernameController) => _username = _usernameController,
+                  //   decoration: const InputDecoration(
+                  //     labelText: 'Username',
+                  //     hintText: 'Enter your username',
+                  //     prefixIcon: Icon(Icons.person_outline),
+                  //   ),
+                  // ),
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: _dateController,

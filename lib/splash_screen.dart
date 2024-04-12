@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     // Your splash screen UI code
     return Scaffold(
-      backgroundColor: Color(0xFFFAF7F2),
+      backgroundColor: Color(0xFFF5F5F5),
       body: Center(
         child: Column( 
           mainAxisAlignment: MainAxisAlignment.center,

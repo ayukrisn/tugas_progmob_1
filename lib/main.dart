@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.baloo2TextTheme(),
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 234, 185, 108), // Text style
+            backgroundColor: Color(0xFFF5B95B), // Text style
             elevation: 1, // Elevation
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15), // Rounded corners
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           )),
           inputDecorationTheme: InputDecorationTheme(
             filled: true,
-            fillColor: Color(0xFFFCF3E5),
+            fillColor: Color(0xFFF7F3EB),
             labelStyle: const TextStyle(
               color: Color(0xFF263E4A),
               fontWeight: FontWeight.bold,
