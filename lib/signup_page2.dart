@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas_progmob_1/login_page.dart';
 import 'package:tugas_progmob_1/home_page.dart';
@@ -69,7 +70,7 @@ class _SignupPageState extends State<SignupPage2> {
   DateTime? _birthDate;
 
   TextEditingController _nameController = TextEditingController();
-  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _phoneNumberController = TextEditingController();
   TextEditingController _careerController = TextEditingController();
   TextEditingController _dateController = TextEditingController();
 
@@ -154,25 +155,28 @@ class _SignupPageState extends State<SignupPage2> {
                       prefixIcon: Icon(Icons.face),
                     ),
                   ),
-                  // const SizedBox(height: 16),
-                  // TextFormField(
-                  //   controller: _usernameController,
-                  //   validator: (_usernameController) {
-                  //     if (_usernameController == null || _usernameController.isEmpty) {
-                  //       return 'Please enter your username.';
-                  //     }
-                  //     if (_usernameController.trim().contains(RegExp(r'\s'))) {
-                  //       return 'Whitespace is not allowed';
-                  //     }
-                  //     return null;
-                  //   },
-                  //   onSaved: (_usernameController) => _username = _usernameController,
-                  //   decoration: const InputDecoration(
-                  //     labelText: 'Username',
-                  //     hintText: 'Enter your username',
-                  //     prefixIcon: Icon(Icons.person_outline),
-                  //   ),
-                  // ),
+                  const SizedBox(height: 16),
+                  IntlPhoneField(
+                    controller: _phoneNumberController,
+                    decoration: const InputDecoration(
+                      labelText: 'Phone Number',
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(),
+                      ),
+                    ),
+                    initialCountryCode: 'ID',
+                    onChanged: (phone) {
+                      // print(phone.completeNumber);
+                      print(phone.number);
+                    },
+                    validator: (phone) {
+                      if (phone == null || phone.number.isEmpty) {
+                        return 'Please enter your phone number';
+                      }
+                      print("test" + phone.number);
+                      return null;
+                    },
+                  ),
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: _dateController,
