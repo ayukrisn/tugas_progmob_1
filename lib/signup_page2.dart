@@ -23,7 +23,7 @@ class CustomDropdownFormField extends StatelessWidget {
     return DropdownButtonFormField<String>(
       value: value,
       decoration: InputDecoration(
-        labelText: hint,
+        labelText: "Career",
         prefixIcon: Icon(Icons.work),
       ),
       items: [
@@ -65,7 +65,8 @@ class _SignupPageState extends State<SignupPage2> {
 
   bool _passwordVisible = true;
   String? _name = '';
-  String? _username = '';
+  String? _gender = '';
+  String? _genderError;
   String? _career;
   DateTime? _birthDate;
 
@@ -156,28 +157,6 @@ class _SignupPageState extends State<SignupPage2> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  IntlPhoneField(
-                    controller: _phoneNumberController,
-                    decoration: const InputDecoration(
-                      labelText: 'Phone Number',
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(),
-                      ),
-                    ),
-                    initialCountryCode: 'ID',
-                    onChanged: (phone) {
-                      // print(phone.completeNumber);
-                      print(phone.number);
-                    },
-                    validator: (phone) {
-                      if (phone == null || phone.number.isEmpty) {
-                        return 'Please enter your phone number';
-                      }
-                      print("test" + phone.number);
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 16),
                   TextFormField(
                     controller: _dateController,
                     decoration: const InputDecoration(
@@ -213,7 +192,90 @@ class _SignupPageState extends State<SignupPage2> {
                       });
                     },
                   ),
-                  const SizedBox(height: 120),
+                  const SizedBox(height: 16),
+                  IntlPhoneField(
+                    controller: _phoneNumberController,
+                    decoration: const InputDecoration(
+                      labelText: 'Phone Number',
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(),
+                      ),
+                    ),
+                    initialCountryCode: 'ID',
+                    onChanged: (phone) {
+                      // print(phone.completeNumber);
+                      print(phone.number);
+                    },
+                    validator: (phone) {
+                      if (phone == null || phone.number.isEmpty) {
+                        return 'Please enter your phone number';
+                      }
+                      print("test" + phone.number);
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  Text("Gender",
+                      style: GoogleFonts.baloo2(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF263E4A))),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xFFF7F3EB),
+                            border: Border.all(
+                                width: 2,
+                                color: _gender == 'male'
+                                    ? Color(0xFF263E4A)
+                                    : Color(0xFFEFCD9F)),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: ListTile(
+                            title: Text('Male'),
+                            leading: Radio(
+                              value: 'male',
+                              groupValue: _gender,
+                              onChanged: (value) {
+                                setState(() {
+                                  _gender = value as String?;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xFFF7F3EB),
+                            border: Border.all(
+                                width: 2,
+                                color: _gender == 'female'
+                                    ? Color(0xFF263E4A)
+                                    : Color(0xFFEFCD9F)),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: ListTile(
+                            title: Text('Female'),
+                            leading: Radio(
+                              value: 'female',
+                              groupValue: _gender,
+                              onChanged: (value) {
+                                setState(() {
+                                  _gender = value as String?;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 40),
                   Row(
                     children: [
                       Expanded(
