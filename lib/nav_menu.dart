@@ -11,14 +11,16 @@ class NavBar extends StatelessWidget {
     final controller = Get.put(NavigationController());
     return Scaffold(
       bottomNavigationBar: Obx(
-        () => NavigationBar( 
+        () => NavigationBar(
           height: 80,
           elevation: 0,
           selectedIndex: controller.selectedIndex.value,
-          onDestinationSelected: (index) => controller.selectedIndex.value = index,
+          onDestinationSelected: (index) =>
+              controller.selectedIndex.value = index,
           destinations: const [
             NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-            NavigationDestination(icon: Icon(Icons.calendar_month), label: 'Calendar'),
+            NavigationDestination(
+                icon: Icon(Icons.calendar_month), label: 'Calendar'),
             NavigationDestination(icon: Icon(Icons.group), label: 'Buddies'),
             NavigationDestination(icon: Icon(Icons.settings), label: 'Settings')
           ],
@@ -34,8 +36,32 @@ class NavigationController extends GetxController {
 
   final screens = [
     HomePage(),
-    Container(color: Colors.blue),
+    Center(
+      child: Container(
+        padding: EdgeInsets.all(16),
+        child: const Text(
+          "This page has not been built yet! Stay tuned and for the meantime, you can check our Home and Buddies page. Thank you :D",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+          ),
+        ),
+      ),
+    ),
     BuddiesPage(),
-    Container(color: Colors.black),
+    Center(
+      child: Container(
+        padding: EdgeInsets.all(16),
+        child: const Text(
+          "This page has not been built yet! Stay tuned and for the meantime, you can check our Home and Buddies page. Thank you :D",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+          ),
+        ),
+      ),
+    ),
   ];
 }
