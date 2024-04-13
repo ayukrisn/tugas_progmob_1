@@ -39,6 +39,7 @@ dependencies:
   is_valid: ^0.0.8
   intl_phone_field: ^3.2.0
   intl_phone_number_input: ^0.7.4
+  get: ^4.6.6
 
 dev_dependencies:
   flutter_test:
