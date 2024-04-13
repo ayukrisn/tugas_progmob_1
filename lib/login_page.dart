@@ -32,8 +32,6 @@ class _LoginPageState extends State<LoginPage> {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 32),
             Center(
@@ -102,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: _passwordController,
-                    obscureText: !_passwordVisible, // Hides the entered text
+                    obscureText: !_passwordVisible,
                     validator: (_passwordController) {
                       if (_passwordController == null || _passwordController.isEmpty) {
                         return 'Please enter your password.';
@@ -140,7 +138,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // Navigate to login page
                           Navigator.push(
                             context,
                             MaterialPageRoute(

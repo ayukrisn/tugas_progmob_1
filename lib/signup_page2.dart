@@ -202,7 +202,6 @@ class _SignupPageState extends State<SignupPage2> {
                     ),
                     initialCountryCode: 'ID',
                     onChanged: (phone) {
-                      // print(phone.completeNumber);
                       print(phone.number);
                     },
                     validator: (phone) {

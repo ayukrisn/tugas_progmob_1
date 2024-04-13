@@ -34,10 +34,9 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Expanded(
-                  // Wrap Row with Expanded
                   child: Column(
                     crossAxisAlignment:
-                        CrossAxisAlignment.start, // Align Column to start
+                        CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Hello, Ayu Krisna!',
@@ -67,6 +66,13 @@ class _HomePageState extends State<HomePage> {
                   ],
                 )
               ],
+            ),
+            const SizedBox(height: 28),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Search tasks...',
+                prefixIcon: Icon(Icons.search),
+              ),
             ),
             const SizedBox(height: 28),
             const Align(
@@ -100,8 +106,6 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Handle adding task action
-          // For example, you can navigate to a new screen to add a task
         },
         child: Icon(Icons.add),
       ),

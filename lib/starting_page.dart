@@ -74,7 +74,6 @@ class StartingPage extends StatelessWidget {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          // Add your onPressed functionality here
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -100,7 +99,6 @@ class StartingPage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Navigate to login page
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => LoginPage()),

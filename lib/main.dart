@@ -9,7 +9,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,10 +25,10 @@ class MyApp extends StatelessWidget {
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFFF5B95B), // Text style
-            elevation: 1, // Elevation
+            backgroundColor: Color(0xFFF5B95B),
+            elevation: 1,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15), // Rounded corners
+              borderRadius: BorderRadius.circular(15),
             ),
             padding: EdgeInsets.symmetric(vertical: 10),
           )),
