@@ -137,6 +137,13 @@ class _HomePageState extends State<HomePage> {
                 setState(() {
                   tasks.remove(categoryTasks[index]);
                 });
+                ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(
+                    'Task has been deleted!',
+                  ),
+                ),
+              );
               },
             ),
             onTap: () {
