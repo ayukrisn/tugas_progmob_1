@@ -214,6 +214,7 @@ class _SignupPageState extends State<SignupPage2> {
                       return null;
                     },
                   ),
+
                   const SizedBox(height: 16),
                   Text("Gender",
                       style: GoogleFonts.baloo2(
@@ -275,6 +276,12 @@ class _SignupPageState extends State<SignupPage2> {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 6),
+                  if (_gender == null || _gender == "")
+                    const Text(
+                      'Please select a gender',
+                      style: TextStyle(color: Color(0xFFeb4444), fontSize: 12),
+                    ),
                   const SizedBox(height: 40),
                   Row(
                     children: [
