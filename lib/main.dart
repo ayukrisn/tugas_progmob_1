@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas_progmob_1/splash_screen.dart';
-import 'package:tugas_progmob_1/nav_menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,7 +57,7 @@ class MyApp extends StatelessWidget {
               borderSide: BorderSide(width: 2, color: Color(0xFFeb4444)),
             ),
           )),
-      home: NavBar(),
+      home: SplashScreen(),
     );
   }
 }

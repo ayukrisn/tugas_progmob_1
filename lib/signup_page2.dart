@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas_progmob_1/login_page.dart';
-import 'package:tugas_progmob_1/home_page.dart';
+import 'package:tugas_progmob_1/nav_menu.dart';
 
 class CustomDropdownFormField extends StatelessWidget {
   final String? value;
@@ -63,7 +63,6 @@ class SignupPage2 extends StatefulWidget {
 class _SignupPageState extends State<SignupPage2> {
   final _formKey = GlobalKey<FormState>();
 
-  bool _passwordVisible = true;
   bool genderError = false;
   String? _name = '';
   String? _gender = '';
@@ -306,7 +305,7 @@ class _SignupPageState extends State<SignupPage2> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomePage()),
+                                    builder: (context) => NavBar()),
                               );
                             }
                           },
