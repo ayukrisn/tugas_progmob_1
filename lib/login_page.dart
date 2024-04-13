@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                       if (_passwordController == null || _passwordController.isEmpty) {
                         return 'Please enter your password.';
                       }
-                      if (_passwordController != 'progmobkecebadai') {
+                      if (_passwordController != 'progmob') {
                         return 'Wrong password. Please try again.';
                       }
                       return null;
