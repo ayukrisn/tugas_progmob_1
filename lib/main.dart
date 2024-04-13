@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas_progmob_1/splash_screen.dart';
+import 'package:tugas_progmob_1/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +22,10 @@ class MyApp extends StatelessWidget {
           textSelectionTheme:
               TextSelectionThemeData(cursorColor: Color(0xFF263E4A)),
           textTheme: GoogleFonts.baloo2TextTheme(),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Color(0xFFF5F5F5),
+
+          ),
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
             backgroundColor: Color(0xFFF5B95B), // Text style
