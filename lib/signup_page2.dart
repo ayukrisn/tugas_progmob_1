@@ -64,9 +64,9 @@ class _SignupPageState extends State<SignupPage2> {
   final _formKey = GlobalKey<FormState>();
 
   bool _passwordVisible = true;
+  bool genderError = false;
   String? _name = '';
   String? _gender = '';
-  String? _genderError;
   String? _career;
   DateTime? _birthDate;
 
@@ -214,7 +214,6 @@ class _SignupPageState extends State<SignupPage2> {
                       return null;
                     },
                   ),
-
                   const SizedBox(height: 16),
                   Text("Gender",
                       style: GoogleFonts.baloo2(
@@ -229,9 +228,11 @@ class _SignupPageState extends State<SignupPage2> {
                             color: Color(0xFFF7F3EB),
                             border: Border.all(
                                 width: 2,
-                                color: _gender == 'male'
-                                    ? Color(0xFF263E4A)
-                                    : Color(0xFFEFCD9F)),
+                                color: genderError
+                                    ? Color(0xFFeb4444)
+                                    : _gender == 'male'
+                                        ? Color(0xFF263E4A)
+                                        : Color(0xFFEFCD9F)),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: ListTile(
@@ -255,9 +256,11 @@ class _SignupPageState extends State<SignupPage2> {
                             color: Color(0xFFF7F3EB),
                             border: Border.all(
                                 width: 2,
-                                color: _gender == 'female'
-                                    ? Color(0xFF263E4A)
-                                    : Color(0xFFEFCD9F)),
+                                color: genderError
+                                    ? Color(0xFFeb4444)
+                                    : _gender == 'female'
+                                        ? Color(0xFF263E4A)
+                                        : Color(0xFFEFCD9F)),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: ListTile(
@@ -277,7 +280,7 @@ class _SignupPageState extends State<SignupPage2> {
                     ],
                   ),
                   const SizedBox(height: 6),
-                  if (_gender == null || _gender == "")
+                  if (genderError)
                     const Text(
                       'Please select a gender',
                       style: TextStyle(color: Color(0xFFeb4444), fontSize: 12),
@@ -288,7 +291,17 @@ class _SignupPageState extends State<SignupPage2> {
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {
+                            if (_gender == null || _gender == "") {
+                              setState(() {
+                                genderError = true;
+                              });
+                            } else {
+                              setState(() {
+                                genderError = false;
+                              });
+                            }
+                            if (_formKey.currentState!.validate() &&
+                                !genderError) {
                               _formKey.currentState?.save();
                               Navigator.push(
                                 context,
