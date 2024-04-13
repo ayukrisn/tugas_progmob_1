@@ -11,9 +11,14 @@ class _HomePageState extends State<HomePage> {
   final List<Task> tasks = [
     Task('Progmob Task', '3 Days Ago', 'Done'),
     Task('Pancasila Task', '1 Day Ago', 'Done'),
+    Task('Integrasi Sistem Task', '1 Day Ago', 'Done'),
     Task('ADSI Task', '3 Days Left', 'On Going'),
     Task('Bahasa Indonesia Task', '4 Days Left', 'On Going'),
-    Task('Keamanan Informasi Task', '8 Days Left','Coming Soon'),
+    Task('English Task', '4 Days Left', 'On Going'),
+    Task('Intern Task', '4 Days Left', 'On Going'),
+    Task('Keamanan Informasi Task', '8 Days Left', 'Coming Soon'),
+    Task('UI/UX Design Task', '8 Days Left', 'Coming Soon'),
+    Task('Praktikum Task', '8 Days Left', 'Coming Soon'),
   ];
 
   int tasksLeft = 0;
@@ -24,8 +29,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Color(0xFFF5F5F5),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 48),
-        child: Column(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+        child: ListView(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -95,6 +100,13 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Handle adding task action
+          // For example, you can navigate to a new screen to add a task
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 
@@ -102,7 +114,8 @@ class _HomePageState extends State<HomePage> {
     List<Task> categoryTasks =
         tasks.where((task) => task.category == category).toList();
 
-    return Flexible(
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: categoryTasks.length,
