@@ -1,6 +1,6 @@
 # tugas_progmob_1
 
-A new Flutter project.
+**Untuk tugas progmob 2 dapat disimak pada GitHub berikut: https://github.com/ayukrisn/tugas_progmob_2**
 
 ## Getting Started
 
